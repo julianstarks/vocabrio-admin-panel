@@ -39,16 +39,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build the app
-        - name: Deploy to Azure Static Web Apps
-    uses: Azure/static-web-apps-deploy@v1
-    with:
-      azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_ROCK_0A43A441E }}
-      action: "upload"
-      app_location: "/"
-      api_location: ""
-      output_location: "dist"
-      github_token: ${{ steps.idtoken.outputs.result }}
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_ROCK_0A43A441E }}
+          action: "upload"
+          app_location: "/"
+          output_location: "dist"
+          github_token: ${{ steps.idtoken.outputs.result }}
+
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
