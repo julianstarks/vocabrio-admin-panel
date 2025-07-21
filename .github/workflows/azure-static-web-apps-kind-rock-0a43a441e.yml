@@ -45,6 +45,7 @@ jobs:
           app_location: "/"
           output_location: "dist"
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_ROCK_0A43A441E }}
+        
 
 
   close_pull_request_job:
